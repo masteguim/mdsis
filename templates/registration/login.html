@@ -28,7 +28,7 @@
 
     .login-title {
         font-weight: 800;
-        color: #0d6efd;
+        color: #fd0d0d;
         margin-bottom: 8px;
     }
 
@@ -47,21 +47,34 @@
     }
 
     .btn-login {
-        padding: 12px;
-        border-radius: 10px;
-        font-weight: 700;
-    }
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 700;
+
+    background-color: #ca141d;  /* mesma cor do cadastro */
+    color: white;
+    border: none;
+}
+
+    .btn-login:hover {
+    background-color: #ca141d;
+}
 
     .register-text {
-        margin-top: 24px;
-        text-align: center;
-        color: #6c757d;
-    }
+    margin-top: 24px;
+    text-align: center;
+    color: #6c757d;
+}
 
     .register-text a {
-        text-decoration: none;
-        font-weight: 600;
-    }
+    text-decoration: none;
+    font-weight: 600;
+    color: #fd0d0d;
+}
+
+    .register-text a:hover {
+    color: #ca141d;
+}
 </style>
 
 <div class="login-container">
@@ -106,7 +119,7 @@
             </div>
 
             <div class="d-grid mt-4">
-                <button type="submit" class="btn btn-primary btn-login">
+                <button type="submit" class="btn  btn-login">
                     Entrar
                 </button>
             </div>
