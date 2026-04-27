@@ -1,0 +1,108 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Cadastro - MDSIS{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #eef3ff, #f8f9fa);
+    }
+
+    .register-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .register-card {
+        width: 100%;
+        max-width: 430px;
+        background: white;
+        padding: 32px;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .register-title {
+        font-weight: 800;
+        color: #0d6efd;
+    }
+
+    .form-control {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .btn-register {
+        padding: 12px;
+        border-radius: 10px;
+        font-weight: 700;
+    }
+
+    .login-link {
+        margin-top: 24px;
+        text-align: center;
+        color: #6c757d;
+    }
+
+    .login-link a {
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .errorlist {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+        padding-left: 18px;
+    }
+</style>
+
+<div class="register-container">
+    <div class="register-card">
+
+        <div class="text-center mb-4">
+            <h2 class="register-title">Criar conta</h2>
+            <p class="text-muted">Cadastre-se para acessar o sistema</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Usuário</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Senha</label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Confirmar senha</label>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+            </div>
+
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary btn-register">
+                    Cadastrar
+                </button>
+            </div>
+        </form>
+
+        <p class="login-link">
+            Já tem conta?
+            <a href="{% url 'login' %}">Entrar</a>
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}

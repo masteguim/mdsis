@@ -1,0 +1,123 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Login - MDSIS{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #eef3ff, #f8f9fa);
+    }
+
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 420px;
+        background: white;
+        padding: 32px;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .login-title {
+        font-weight: 800;
+        color: #0d6efd;
+        margin-bottom: 8px;
+    }
+
+    .login-subtitle {
+        color: #6c757d;
+        margin-bottom: 28px;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .form-control {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .btn-login {
+        padding: 12px;
+        border-radius: 10px;
+        font-weight: 700;
+    }
+
+    .register-text {
+        margin-top: 24px;
+        text-align: center;
+        color: #6c757d;
+    }
+
+    .register-text a {
+        text-decoration: none;
+        font-weight: 600;
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-card">
+
+        <div class="text-center">
+            <h2 class="login-title">MDSIS</h2>
+            <p class="login-subtitle">Acesse sua conta para ver seus indicadores</p>
+        </div>
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                Usuário ou senha inválidos.
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuário</label>
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    class="form-control"
+                    placeholder="Digite seu usuário"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Digite sua senha"
+                    required
+                >
+            </div>
+
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary btn-login">
+                    Entrar
+                </button>
+            </div>
+        </form>
+
+        <p class="register-text">
+            Ainda não tem conta?
+            <a href="{% url 'cadastro' %}" class="text-decoration-none">Cadastre-se</a>
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}
