@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card p-5">
+            <div class="text-center mb-4">
+                <h4 class="fw-bold">Definir Nova Meta</h4>
+                <p class="text-muted">Preencha os dados abaixo para o planejamento.</p>
+            </div>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Título da Meta</label>
+                    <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="Ex: Estudar Star-Delta" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Descrição Detalhada</label>
+                    <textarea class="form-control bg-light border-0" rows="4" placeholder="O que você pretende alcançar?"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Prazo Final</label>
+                        <input type="date" class="form-control bg-light border-0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Prioridade</label>
+                        <select class="form-select bg-light border-0">
+                            <option>Baixa</option>
+                            <option>Média</option>
+                            <option>Alta (Crítica)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-mack py-3">Salvar Meta</button>
+                    <a href="#" class="btn btn-link text-muted mt-2">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

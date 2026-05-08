@@ -1,23 +1,121 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}MetaAnalytics{% endblock %}</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDSIS - {% block title %}{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
+        :root {
+            --mack-red: #c00000;
+            --mack-red-dark: #8b0000;
+            --bg-light: #f8f9fa;
+            --sidebar-width: 260px;
+        }
+
         body {
-            background-color: #f8f8fa;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-light);
+            color: #333;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            background: #fff;
+            border-right: 1px solid #e9ecef;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .sidebar-brand {
+            padding: 2rem 1.5rem;
+            font-weight: 800;
+            color: var(--mack-red);
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .nav-link {
+            color: #6c757d;
+            padding: 0.8rem 1.5rem;
+            margin: 0.2rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: #fff5f5;
+            color: var(--mack-red);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+
+        .btn-mack {
+            background-color: var(--mack-red);
+            color: white;
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn-mack:hover {
+            background-color: var(--mack-red-dark);
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar { margin-left: calc(-1 * var(--sidebar-width)); }
+            .main-content { margin-left: 0; }
+            .sidebar.active { margin-left: 0; }
         }
     </style>
 </head>
 <body>
 
-{% block content %}
-{% endblock %}
+    <nav class="sidebar shadow-sm" id="sidebar">
+        <div class="sidebar-brand text-uppercase">MDSIS</div>
+        <div class="nav flex-column">
+            <a href="#" class="nav-link active"><i class="bi bi-grid-1x2"></i> Dashboard</a>
+            <a href="#" class="nav-link"><i class="bi bi-list-check"></i> Minhas Metas</a>
+            <a href="#" class="nav-link"><i class="bi bi-graph-up-arrow"></i> Indicadores</a>
+            <hr class="mx-3 text-muted">
+            <a href="#" class="nav-link"><i class="bi bi-person"></i> Perfil</a>
+            <a href="#" class="nav-link text-danger mt-auto"><i class="bi bi-box-arrow-right"></i> Sair</a>
+        </div>
+    </nav>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <main class="main-content">
+        <header class="d-flex justify-content-between align-items-center mb-5">
+            <div>
+                <h2 class="fw-bold mb-0">Bem-vindo, {{ user.username }}</h2>
+                <p class="text-muted">Acompanhe seus indicadores acadêmicos hoje.</p>
+            </div>
+            <a href="#" class="btn btn-mack"><i class="bi bi-plus-lg"></i> Nova Meta</a>
+        </header>
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

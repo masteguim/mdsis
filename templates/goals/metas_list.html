@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card p-4">
+    <div class="d-md-flex justify-content-between align-items-center mb-4 gap-3">
+        <div class="input-group" style="max-width: 400px;">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control border-start-0 ps-0" placeholder="Buscar meta...">
+        </div>
+        <select class="form-select w-auto mt-2 mt-md-0">
+            <option>Status: Todos</option>
+            <option>Pendente</option>
+            <option>Em progresso</option>
+            <option>Concluída</option>
+        </select>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Título da Meta</th>
+                    <th>Prazo</th>
+                    <th>Status</th>
+                    <th class="text-end">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="border-top-0">
+                <tr>
+                    <td><strong>Publicação de Artigo Científico</strong></td>
+                    <td>15 Out 2026</td>
+                    <td><span class="badge rounded-pill bg-primary-subtle text-primary px-3">Em progresso</span></td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-light border"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-sm btn-light border text-success"><i class="bi bi-check2-circle"></i></button>
+                        <button class="btn btn-sm btn-light border text-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Revisão de Cálculo III</strong></td>
+                    <td>20 Mai 2026</td>
+                    <td><span class="badge rounded-pill bg-warning-subtle text-warning px-3">Pendente</span></td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-light border"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-sm btn-light border text-success"><i class="bi bi-check2-circle"></i></button>
+                        <button class="btn btn-sm btn-light border text-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

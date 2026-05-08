@@ -1,8 +1,47 @@
-{% extends "base/base.html" %}
+{% extends 'base/base.html' %}
 
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h1>Bem-vindo ao MDSIS 🚀</h1>
-<p>Sistema de metas inteligentes.</p>
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card p-4">
+            <small class="text-muted text-uppercase fw-bold">Concluídas</small>
+            <h3 class="fw-bold text-success mb-0">12</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4">
+            <small class="text-muted text-uppercase fw-bold">Em Andamento</small>
+            <h3 class="fw-bold text-primary mb-0">05</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4">
+            <small class="text-muted text-uppercase fw-bold">Pendentes</small>
+            <h3 class="fw-bold text-warning mb-0">03</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card p-4 h-100">
+            <h5 class="fw-bold mb-4">Progresso Geral</h5>
+            <div class="progress mb-3" style="height: 12px; border-radius: 10px;">
+                <div class="progress-bar" style="width: 65%; background-color: var(--mack-red);" role="progressbar"></div>
+            </div>
+            <p class="small text-muted">Você completou 65% das metas previstas para este semestre.</p>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card p-4 h-100">
+            <h5 class="fw-bold mb-3">Atalhos</h5>
+            <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary btn-sm text-start"><i class="bi bi-file-earmark-pdf"></i> Exportar Relatório</button>
+                <button class="btn btn-outline-secondary btn-sm text-start"><i class="bi bi-calendar-event"></i> Ver Calendário</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
