@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
 
 {% block content %}
 <div class="card p-4">
@@ -7,10 +7,11 @@
             <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
             <input type="text" class="form-control border-start-0 ps-0" placeholder="Buscar meta...">
         </div>
+
         <select class="form-select w-auto mt-2 mt-md-0">
             <option>Status: Todos</option>
             <option>Pendente</option>
-            <option>Em progresso</option>
+            <option>Em andamento</option>
             <option>Concluída</option>
         </select>
     </div>
@@ -25,27 +26,57 @@
                     <th class="text-end">Ações</th>
                 </tr>
             </thead>
+
             <tbody class="border-top-0">
-                <tr>
-                    <td><strong>Publicação de Artigo Científico</strong></td>
-                    <td>15 Out 2026</td>
-                    <td><span class="badge rounded-pill bg-primary-subtle text-primary px-3">Em progresso</span></td>
-                    <td class="text-end">
-                        <button class="btn btn-sm btn-light border"><i class="bi bi-pencil"></i></button>
-                        <button class="btn btn-sm btn-light border text-success"><i class="bi bi-check2-circle"></i></button>
-                        <button class="btn btn-sm btn-light border text-danger"><i class="bi bi-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Revisão de Cálculo III</strong></td>
-                    <td>20 Mai 2026</td>
-                    <td><span class="badge rounded-pill bg-warning-subtle text-warning px-3">Pendente</span></td>
-                    <td class="text-end">
-                        <button class="btn btn-sm btn-light border"><i class="bi bi-pencil"></i></button>
-                        <button class="btn btn-sm btn-light border text-success"><i class="bi bi-check2-circle"></i></button>
-                        <button class="btn btn-sm btn-light border text-danger"><i class="bi bi-trash"></i></button>
-                    </td>
-                </tr>
+                {% for meta in metas %}
+                    <tr>
+                        <td>
+                            <strong>{{ meta.titulo }}</strong>
+                            <br>
+                            <small class="text-muted">{{ meta.descricao }}</small>
+                        </td>
+
+                        <td>
+                            {{ meta.prazo|default:"Sem prazo" }}
+                        </td>
+
+                        <td>
+                            {% if meta.status == 'concluida' %}
+                                <span class="badge rounded-pill bg-success-subtle text-success px-3">
+                                    Concluída
+                                </span>
+                            {% elif meta.status == 'andamento' %}
+                                <span class="badge rounded-pill bg-primary-subtle text-primary px-3">
+                                    Em andamento
+                                </span>
+                            {% else %}
+                                <span class="badge rounded-pill bg-warning-subtle text-warning px-3">
+                                    Pendente
+                                </span>
+                            {% endif %}
+                        </td>
+
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-light border">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+
+                            <button class="btn btn-sm btn-light border text-success">
+                                <i class="bi bi-check2-circle"></i>
+                            </button>
+
+                            <button class="btn btn-sm btn-light border text-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center text-muted py-5">
+                            Você ainda não possui metas cadastradas.
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

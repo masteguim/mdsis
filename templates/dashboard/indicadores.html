@@ -1,0 +1,110 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Indicadores{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+
+    <div class="mb-4">
+        <h4 class="fw-bold mb-1">Indicadores de Metas</h4>
+        <p class="text-muted mb-0">
+            Acompanhe o desempenho das suas metas cadastradas.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+            <div class="card border-0 p-4 text-center h-100">
+                <h6 class="text-muted fw-bold mb-4">EFICIÊNCIA</h6>
+
+                <div
+                    class="mx-auto position-relative mb-4"
+                    style="width: 150px; height: 150px; border-radius: 50%;
+                    background: conic-gradient(var(--mack-red) {{ eficiencia }}%, #f1f5f9 0);"
+                >
+                    <div
+                        class="position-absolute top-50 start-50 translate-middle bg-white rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 120px; height: 120px;"
+                    >
+                        <h2 class="fw-bold mb-0">{{ eficiencia }}%</h2>
+                    </div>
+                </div>
+
+                <p class="small text-muted">
+                    Porcentagem de metas concluídas.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card border-0 p-4 h-100">
+                <h6 class="text-muted fw-bold mb-4">DISTRIBUIÇÃO DAS METAS</h6>
+
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between small mb-1">
+                        <span>Concluídas</span>
+                        <span class="fw-bold">{{ concluidas }}</span>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-success" style="width: {{ eficiencia }}%;"></div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between small mb-1">
+                        <span>Em andamento</span>
+                        <span class="fw-bold">{{ andamento }}</span>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-primary" style="width: {{ andamento_percent }}%;"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="d-flex justify-content-between small mb-1">
+                        <span>Pendentes</span>
+                        <span class="fw-bold">{{ pendentes }}</span>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: {{ pendentes_percent }}%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 p-4 text-center">
+                <i class="bi bi-bullseye fs-1 text-danger mb-2"></i>
+                <h3 class="fw-bold mb-0">{{ total }}</h3>
+                <small class="text-muted">Total de metas</small>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 p-4 text-center">
+                <i class="bi bi-check-circle fs-1 text-success mb-2"></i>
+                <h3 class="fw-bold mb-0">{{ concluidas }}</h3>
+                <small class="text-muted">Metas concluídas</small>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 p-4 text-center">
+                <i class="bi bi-hourglass-split fs-1 text-primary mb-2"></i>
+                <h3 class="fw-bold mb-0">{{ andamento }}</h3>
+                <small class="text-muted">Em andamento</small>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 p-4 text-center">
+                <i class="bi bi-exclamation-circle fs-1 text-warning mb-2"></i>
+                <h3 class="fw-bold mb-0">{{ pendentes }}</h3>
+                <small class="text-muted">Pendentes</small>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
