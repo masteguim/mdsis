@@ -2,7 +2,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
-from goals.views import dashboard_view, metas_list_view, meta_create_view, indicadores_view
+from goals.views import (
+    dashboard_view,
+    metas_list_view,
+    meta_create_view,
+    indicadores_view,
+    meta_edit_view,
+    meta_concluir_view,
+    meta_incrementar_view,
+    meta_delete_view,
+)
 
 urlpatterns = [
 
@@ -51,4 +60,16 @@ urlpatterns = [
         'users/',
         include('users.urls')
     ),
+    path(
+        'metas/<int:meta_id>/editar/', meta_edit_view, name='meta_edit'
+    ),
+    path(
+        'metas/<int:meta_id>/concluir/', meta_concluir_view, name='meta_concluir'
+    ),
+    path(
+        'metas/<int:meta_id>/incrementar/', meta_incrementar_view, name='meta_incrementar'
+         ),
+    path(
+        'metas/<int:meta_id>/excluir/', meta_delete_view, name='meta_delete'
+         ),
 ]
