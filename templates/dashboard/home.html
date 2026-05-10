@@ -4,164 +4,183 @@
 {% block content %}
 
 <div class="row g-4 mb-4 fade-in">
+<!-- Boas-vindas -->
+<div class="col-12">
+    <div class="card bg-white border-0 p-4 overflow-hidden position-relative">
 
-    <!-- Boas-vindas -->
-    <div class="col-12">
-        <div class="card bg-white border-0 p-4 overflow-hidden position-relative">
+        <div class="position-relative z-1">
+            <h2 class="fw-bold mb-1">
+                Boas-vindas, {{ user.username }}!
+            </h2>
 
-            <div class="position-relative z-1">
-                <h2 class="fw-bold mb-1">
-                    Boas-vindas, {{ user.username }}!
-                </h2>
+            <p class="text-muted mb-0">
+                Continue avançando nas suas metas 🚀
+            </p>
+        </div>
 
-                <p class="text-muted mb-0">
-                    Você tem <strong>3 metas críticas</strong> para finalizar esta semana.
-                </p>
+        <div
+            class="position-absolute end-0 top-0 h-100 d-none d-md-block"
+            style="width: 200px; background: linear-gradient(90deg, transparent, #fff1f1); opacity: 0.5;"
+        ></div>
+
+    </div>
+</div>
+
+<!-- TOTAL -->
+<div class="col-md-3">
+    <div class="card border-0 p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+
+            <div class="rounded-circle bg-danger bg-opacity-10 p-3 text-danger">
+                <i class="bi bi-bullseye fs-4"></i>
             </div>
 
-            <div
-                class="position-absolute end-0 top-0 h-100 d-none d-md-block"
-                style="width: 200px; background: linear-gradient(90deg, transparent, #fff1f1); opacity: 0.5;"
-            ></div>
+            <div>
+                <span class="text-muted small">Total</span>
+                <h4 class="fw-bold mb-0">{{ total }}</h4>
+            </div>
 
         </div>
     </div>
+</div>
 
-    <!-- Cards -->
-    <div class="col-md-3">
-        <div class="card border-0 p-3 h-100">
-            <div class="d-flex align-items-center gap-3">
+<!-- STREAK -->
+<div class="col-md-3">
+    <div class="card border-0 p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
 
-                <div class="rounded-circle bg-danger bg-opacity-10 p-3 text-danger">
-                    <i class="bi bi-bullseye fs-4"></i>
-                </div>
-
-                <div>
-                    <span class="text-muted small">Total</span>
-                    <h4 class="fw-bold mb-0">{{ total }}</h4>
-                </div>
-
+            <div class="rounded-circle bg-danger bg-opacity-10 p-3 text-danger">
+                <i class="bi bi-fire fs-4"></i>
             </div>
+
+            <div>
+                <span class="text-muted small">Streak</span>
+                <h4 class="fw-bold mb-0">{{ streak }} dias</h4>
+            </div>
+
         </div>
     </div>
+</div>
 
-    <div class="col-md-3">
-        <div class="card border-0 p-3 h-100">
-            <div class="d-flex align-items-center gap-3">
+<!-- CONCLUÍDAS -->
+<div class="col-md-3">
+    <div class="card border-0 p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
 
-                <div class="rounded-circle bg-success bg-opacity-10 p-3 text-success">
-                    <i class="bi bi-check-lg fs-4"></i>
-                </div>
-
-                <div>
-                    <span class="text-muted small">Concluídas</span>
-                    <h4 class="fw-bold mb-0">{{ total }}</h4>
-                </div>
-
+            <div class="rounded-circle bg-success bg-opacity-10 p-3 text-success">
+                <i class="bi bi-check-lg fs-4"></i>
             </div>
+
+            <div>
+                <span class="text-muted small">Concluídas</span>
+                <h4 class="fw-bold mb-0">{{ concluidas }}</h4>
+            </div>
+
         </div>
     </div>
+</div>
 
-    <div class="col-md-3">
-        <div class="card border-0 p-3 h-100">
-            <div class="d-flex align-items-center gap-3">
+<!-- PENDENTES -->
+<div class="col-md-3">
+    <div class="card border-0 p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
 
-                <div class="rounded-circle bg-warning bg-opacity-10 p-3 text-warning">
-                    <i class="bi bi-hourglass-split fs-4"></i>
-                </div>
-
-                <div>
-                    <span class="text-muted small">Pendentes</span>
-                    <h4 class="fw-bold mb-0">{{ total }}</h4>
-                </div>
-
+            <div class="rounded-circle bg-warning bg-opacity-10 p-3 text-warning">
+                <i class="bi bi-hourglass-split fs-4"></i>
             </div>
+
+            <div>
+                <span class="text-muted small">Pendentes</span>
+                <h4 class="fw-bold mb-0">{{ pendentes }}</h4>
+            </div>
+
         </div>
     </div>
+</div>
 
-    <div class="col-md-3">
-        <div class="card border-0 p-3 h-100">
-            <div class="d-flex align-items-center gap-3">
+<!-- EFICIÊNCIA -->
+<div class="col-md-3">
+    <div class="card border-0 p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
 
-                <div class="rounded-circle bg-info bg-opacity-10 p-3 text-info">
-                    <i class="bi bi-graph-up fs-4"></i>
-                </div>
-
-                <div>
-                    <span class="text-muted small">Eficiência</span>
-                    <h4 class="fw-bold mb-0">{{ total }}</h4>
-                </div>
-
+            <div class="rounded-circle bg-info bg-opacity-10 p-3 text-info">
+                <i class="bi bi-graph-up fs-4"></i>
             </div>
+
+            <div>
+                <span class="text-muted small">Eficiência</span>
+                <h4 class="fw-bold mb-0">{{ eficiencia }}%</h4>
+            </div>
+
         </div>
     </div>
-
+</div>
 </div>
 
 <div class="row g-4">
+<!-- Gráfico -->
+<div class="col-lg-8">
 
-    <!-- Gráfico -->
-    <div class="col-lg-8">
+    <div class="card border-0 p-4">
 
-        <div class="card border-0 p-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
 
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="fw-bold mb-0">
+                Atividade Semanal
+            </h5>
 
-                <h5 class="fw-bold mb-0">
-                    Atividade Semanal
-                </h5>
+            <select class="form-select form-select-sm w-auto border-0 bg-light">
+                <option>Últimos 7 dias</option>
+            </select>
 
-                <select class="form-select form-select-sm w-auto border-0 bg-light">
-                    <option>Últimos 7 dias</option>
-                </select>
-
-            </div>
-
-            <!-- Barras -->
-            <div class="d-flex align-items-end justify-content-between gap-3" style="height: 350px;">
-
-                <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
-                    <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 70%; opacity: 0.8; min-height: 40px;"></div>
-                </div>
-
-                <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
-                    <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 70%; opacity: 0.8; min-height: 40px;"></div>
-                </div>
-
-                <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
-                    <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 70%; opacity: 0.8; min-height: 40px;"></div>
-                </div>
-
-                <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
-                    <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 70%; opacity: 0.8; min-height: 40px;"></div>
-                </div>
-
-                <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
-                    <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 70%; opacity: 0.8; min-height: 40px;"></div>
-                </div>
-
-                <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
-                    <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 70%; opacity: 0.8; min-height: 40px;"></div>
-                </div>
-
-                <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
-                    <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 70%; opacity: 0.8; min-height: 40px;"></div>
-                </div>
-
-            </div>
-
-            <!-- Dias -->
-            <div class="d-flex justify-content-between mt-3 text-muted small px-1">
-                <span>Seg</span>
-                <span>Ter</span>
-                <span>Qua</span>
-                <span>Qui</span>
-                <span>Sex</span>
-                <span>Sab</span>
-                <span>Dom</span>
-            </div>
         </div>
+
+        <!-- Barras -->
+        <div class="d-flex align-items-end justify-content-between gap-3" style="height: 350px;">
+
+            <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
+                <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 70%; opacity: 0.8; min-height: 40px;"></div>
+            </div>
+
+            <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
+                <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 50%; opacity: 0.8; min-height: 40px;"></div>
+            </div>
+
+            <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
+                <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 90%; opacity: 0.8; min-height: 40px;"></div>
+            </div>
+
+            <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
+                <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 30%; opacity: 0.8; min-height: 40px;"></div>
+            </div>
+
+            <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
+                <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 80%; opacity: 0.8; min-height: 40px;"></div>
+            </div>
+
+            <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
+                <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 60%; opacity: 0.8; min-height: 40px;"></div>
+            </div>
+
+            <div class="bg-light rounded-top w-100 position-relative overflow-hidden" style="height: 100%;">
+                <div class="bg-mack position-absolute bottom-0 w-100 rounded-top" style="height: 95%; opacity: 0.8; min-height: 40px;"></div>
+            </div>
+
+        </div>
+
+        <!-- Dias -->
+        <div class="d-flex justify-content-between mt-3 text-muted small px-1">
+            <span>Seg</span>
+            <span>Ter</span>
+            <span>Qua</span>
+            <span>Qui</span>
+            <span>Sex</span>
+            <span>Sab</span>
+            <span>Dom</span>
+        </div>
+
     </div>
+</div>
 </div>
 
 {% endblock %}

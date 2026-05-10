@@ -18,4 +18,30 @@ class Goal(models.Model):
 
     def __str__(self):
         return self.titulo
+
+    TIPO_CHOICES = [
+        ('simples', 'Meta simples'),
+        ('progresso', 'Meta por progresso'),
+    ]
+
+    tipo = models.CharField(
+        max_length=20,
+        choices=TIPO_CHOICES,
+        default='simples'
+    )
+
+    unidade = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
+
+    quantidade_total = models.PositiveIntegerField(
+        blank=True,
+        null=True
+    )
+
+    quantidade_atual = models.PositiveIntegerField(
+        default=0
+    )
 # Create your models here.
