@@ -44,4 +44,10 @@ class Goal(models.Model):
     quantidade_atual = models.PositiveIntegerField(
         default=0
     )
-# Create your models here.
+class GoalActivity(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    goal = models.ForeignKey(Goal, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.goal.titulo}"

@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-
 from users.models import UserProfile
-from .models import Goal
 from .forms import GoalForm
-
+from .models import Goal, GoalActivity
 
 def atualizar_streak(user):
     hoje = timezone.localdate()
@@ -39,6 +37,39 @@ def dashboard_view(request):
     if total > 0:
         eficiencia = round((concluidas / total) * 100)
 
+    hoje = timezone.localdate()
+
+    dias_semana = []
+
+    for i in range(6, -1, -1):
+        dia = hoje - timezone.timedelta(days=i)
+
+        quantidade = GoalActivity.objects.filter(
+            user=request.user,
+            created_at__date=dia
+        ).count()
+
+        dias_semana.append({
+            'dia': dia.strftime('%a'),
+            'quantidade': quantidade
+        })
+
+    maior_quantidade = max([item['quantidade'] for item in dias_semana], default=0)
+
+    grafico_semana = []
+
+    for item in dias_semana:
+        if maior_quantidade > 0:
+            valor = round((item['quantidade'] / maior_quantidade) * 100)
+        else:
+            valor = 0
+
+        grafico_semana.append({
+            'dia': item['dia'],
+            'valor': valor,
+            'quantidade': item['quantidade']
+        })
+
     context = {
         'total': total,
         'concluidas': concluidas,
@@ -46,12 +77,10 @@ def dashboard_view(request):
         'andamento': andamento,
         'eficiencia': eficiencia,
         'streak': profile.streak,
+        'grafico_semana': grafico_semana,
     }
 
     return render(request, 'dashboard/home.html', context)
-
-
-# LISTA DE METAS
 @login_required
 def metas_list_view(request):
     metas = Goal.objects.filter(user=request.user)
@@ -125,6 +154,7 @@ def meta_concluir_view(request, meta_id):
         meta.quantidade_atual = meta.quantidade_total
 
     meta.save()
+    GoalActivity.objects.create(user=request.user, goal=meta)
 
     atualizar_streak(request.user)
 
@@ -144,6 +174,7 @@ def meta_incrementar_view(request, meta_id):
             meta.status = 'concluida'
 
         meta.save()
+        GoalActivity.objects.create(user=request.user, goal=meta)
 
         atualizar_streak(request.user)
 
