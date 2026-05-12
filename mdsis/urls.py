@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
+from analytics.views import AdminDashboardView, AdminUserUpdateView, AdminGoalDeleteView
 
 # IMPORT CORRIGIDO: apontando para o app onde a view foi criada
 from analytics.views import AdminDashboardView
@@ -20,10 +21,16 @@ from goals.views import (
 urlpatterns = [
     # Rota raiz redireciona para o login
     path('', lambda request: redirect('login')),
+    # ... suas outras rotas ...
+    path('painel/', AdminDashboardView.as_view(), name='admin_home'),
+    path('painel/usuario/<int:pk>/editar/', AdminUserUpdateView.as_view(), name='admin_user_edit'),
+
+    path('painel/meta/<int:pk>/excluir/', AdminGoalDeleteView.as_view(), name='admin_goal_delete'),
 
     # Caminho específico para o seu Admin Customizado
     path('painel/', AdminDashboardView.as_view(), name='admin_home'),
 
+    path('painel/', AdminDashboardView.as_view(), name='admin_home'),
     # Admin padrão do Django
     path('admin/', admin.site.urls),
 
