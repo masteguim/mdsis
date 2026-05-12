@@ -88,21 +88,21 @@
             .main-content { margin-left: 0; }
             .sidebar.active { margin-left: 0; }
         }
-          .bg-mack {
-         background-color: var(--mack-red) !important;
-                }
+        .bg-mack {
+            background-color: var(--mack-red) !important;
+        }
     </style>
 </head>
 <body>
 
-   <nav class="sidebar shadow-sm" id="sidebar">
+<nav class="sidebar shadow-sm" id="sidebar">
     <div class="sidebar-brand text-uppercase">MDSIS</div>
 
     <div class="nav flex-column">
         <a href="{% url 'home' %}"
             class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-        <i class="bi bi-grid-1x2"></i> Dashboard
-         </a>
+            <i class="bi bi-grid-1x2"></i> Dashboard
+        </a>
 
         <a href="{% url 'metas_list' %}"
             class="nav-link {% if request.resolver_match.url_name == 'metas_list' %}active{% endif %}">
@@ -119,9 +119,16 @@
              <i class="bi bi-person"></i> Perfil
         </a>
 
+        {% if user.is_staff %}
+        <hr class="mx-3 my-2 text-muted">
+        <a href="{% url 'admin_home' %}"
+            class="nav-link text-primary {% if request.resolver_match.url_name == 'admin_home' %}active{% endif %}">
+            <i class="bi bi-shield-lock"></i> Painel ADM
+        </a>
+        {% endif %}
+
         <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
-
             <button
                 type="submit"
                 class="nav-link text-danger border-0 bg-transparent w-100 text-start"
