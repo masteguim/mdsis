@@ -70,4 +70,4 @@ Este é um sistema de gestão de metas e indicadores desenvolvido em Django, pro
 Desenvolvido como parte do projeto de Modelagem de Sistemas.
 
 
-Por JooJdeSaaS e LukeMaster
+Por JooJdeSaaS e masteguim
