@@ -12,6 +12,7 @@ urlpatterns = [
 
     path('painel/', AdminDashboardView.as_view(), name='admin_home'),
     path('painel/usuario/<int:pk>/editar/', AdminUserUpdateView.as_view(), name='admin_user_edit'),
+    path('painel/metas/', AdminDashboardView.as_view(), name='admin_metas_list'),
     path('painel/meta/<int:pk>/excluir/', AdminGoalDeleteView.as_view(), name='admin_goal_delete'),
 
     path('admin/', admin.site.urls),
