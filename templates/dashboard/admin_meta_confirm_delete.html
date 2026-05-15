@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Confirmar Exclusão</h4>
+                </div>
+                <div class="card-body">
+                    <p>Você tem certeza que deseja excluir a meta: <strong>"{{ object.titulo }}"</strong>?</p>
+                    <p class="text-muted small">Esta ação não poderá ser desfeita e afetará os dados do usuário <strong>{{ object.user.username }}</strong>.</p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{% url 'admin_metas_list' %}" class="btn btn-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-danger">Sim, Excluir Definitivamente</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

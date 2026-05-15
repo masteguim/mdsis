@@ -37,3 +37,11 @@ class AdminGoalDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.is_staff
+
+class AdminGoalDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Goal
+    template_name = 'dashboard/admin_meta_confirm_delete.html'
+    success_url = reverse_lazy('admin_metas_list')
+
+    def test_func(self):
+        return self.request.user.is_staff
