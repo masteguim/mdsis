@@ -6,9 +6,9 @@
 <div class="row g-4 fade-in">
 
     <div class="col-md-4">
-        <div class="card border-0 text-center p-5">
+        <div class="card border-0 text-center p-5 shadow-sm">
             <img
-                src="https://ui-avatars.com/api/?name={{ user.username }}&background=c00000&color=fff&size=128"
+                src="https://ui-avatars.com/api/?name={{ user.get_full_name|default:user.username }}&background=c00000&color=fff&size=128"
                 class="rounded-circle shadow-sm mx-auto mb-4"
                 alt="Avatar"
                 width="128"
@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-md-8">
-        <div class="card border-0 p-4 h-100">
+        <div class="card border-0 p-4 h-100 shadow-sm">
 
             <h4 class="fw-bold mb-4">Editar Perfil</h4>
 
@@ -48,10 +48,14 @@
                     {{ form.email }}
                 </div>
 
-                <div class="col-12 mt-4">
+                <div class="col-12 mt-4 d-flex justify-content-between align-items-center">
                     <button type="submit" class="btn btn-mack px-4">
                         Salvar Alterações
                     </button>
+
+                    <a href="{% url 'password_change' %}" class="btn btn-link text-muted small">
+                        <i class="bi bi-key"></i> Alterar Senha
+                    </a>
                 </div>
             </form>
 
