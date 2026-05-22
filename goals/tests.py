@@ -85,3 +85,6 @@ class GoalsAppTestCase(TestCase):
             
         meta_ainda_existe = Goal.objects.filter(id=self.meta_user1.id).exists()
         self.assertTrue(meta_ainda_existe)
+
+
+#python3 manage.py test goals

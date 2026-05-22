@@ -58,3 +58,5 @@ class AnalyticsAppTestCase(TestCase):
         self.assertEqual(response.status_code, 302)  # Redirecionamento após sucesso
         self.assertFalse(self.common_user.is_active)  # O usuário foi desativado no BD
         self.assertEqual(self.common_user.email, "novo_email@teste.com")
+
+#python3 manage.py test analytics
