@@ -77,3 +77,6 @@ class GoalsAppTestCase(TestCase):
         # Garante de forma absoluta que a meta do user_um permaneceu intacta no banco de dados
         meta_ainda_existe = Goal.objects.filter(id=self.meta_user1.id).exists()
         self.assertTrue(meta_ainda_existe)
+
+
+#python3 manage.py test goals

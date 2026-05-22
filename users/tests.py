@@ -197,3 +197,5 @@ class MDSISTestCase(TestCase):
         # Assert
         self.assertEqual(response.status_code, 302)
         self.assertFalse(meta_existe)  # A meta foi completamente removida do banco de dados
+
+#python3 manage.py test users

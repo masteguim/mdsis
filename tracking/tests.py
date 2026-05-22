@@ -54,3 +54,5 @@ class TrackingAppTestCase(TestCase):
         # Assert
         self.assertEqual(self.profile.streak, 6)
         self.assertEqual(self.profile.last_activity_date, date.today())
+
+#python3 manage.py test tracking
