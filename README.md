@@ -2,7 +2,7 @@
 
 Este é um sistema de gestão de metas e indicadores desenvolvido em Django, projetado para permitir que utilizadores acompanhem o seu progresso e administradores façam a gestão global da plataforma.
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 ### Para Utilizadores
 * **Gestão de Metas**: Criação, visualização, edição e exclusão de metas pessoais.
@@ -14,20 +14,20 @@ Este é um sistema de gestão de metas e indicadores desenvolvido em Django, pro
 * **Gestão Global**: Capacidade de listar, editar e eliminar metas de qualquer utilizador.
 * **Gestão de Perfis**: Controlo sobre contas de utilizadores, permitindo ativar/desativar perfis.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 * **Framework**: [Django 5.0+](https://www.djangoproject.com/)
 * **Linguagem**: Python 3.12+
 * **Base de Dados**: SQLite (Desenvolvimento)
 * **Frontend**: HTML5, CSS3, Bootstrap 5 (UI Responsiva)
 
-## 📂 Estrutura do Projeto (Apps)
+## Estrutura do Projeto (Apps)
 
 * `goals/`: Gere a lógica central das metas e indicadores.
 * `users/`: Responsável pela autenticação e perfis de utilizador.
 * `analytics/`: Contém as views e lógicas do painel administrativo.
 
-## ⚙️ Configuração e Instalação
+## Configuração e Instalação
 
 1.  **Clonar o repositório**:
     ```bash
@@ -62,7 +62,7 @@ Este é um sistema de gestão de metas e indicadores desenvolvido em Django, pro
     python manage.py runserver
     ```
 
-## 🖥️ Acesso ao Painel
+## Acesso ao Painel
 * **Utilizador Comum**: `/dashboard/`
 * **Painel Administrativo**: `/painel/` (Apenas acessível por utilizadores com `is_staff=True`)
 
